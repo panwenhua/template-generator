@@ -1,11 +1,18 @@
 {
-  "name": "component-generator",
+  "name": "template-generator",
   "version": "0.0.1",
-  "description": "a component generator",
+  "description": "a template-generator tool",
   "main": "index.js",
+  "bin": {
+    "generator": "bin/cli.js"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "panwenhua",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "inquirer": "^6.2.2",
+    "inquirer-fuzzy-path": "^2.0.3"
+  }
 }
