@@ -14,5 +14,8 @@
   "devDependencies": {
     "inquirer": "^6.2.2",
     "inquirer-fuzzy-path": "^2.0.3"
+  },
+  "templateConfig": {
+    "templateFolderPath": "templates/react-template"
   }
 }
