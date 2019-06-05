@@ -22,23 +22,23 @@ class Generator {
             // 首字母大写
             let ComponentName = component.replace(/^\w/g, a => a.toUpperCase());
             // 样式component-name
-            let className = component.replace(/(\w)([A-Z])/g, '$1-$2').toLowerCase();
+            let kebabCase = component.replace(/(\w)([A-Z])/g, '$1-$2').toLowerCase();
             // 组件目标目录路径
-            const componentPath = `${path.resolve(destinationPath)}/${className}`;
+            const componentPath = `${path.resolve(destinationPath)}/${kebabCase}`;
             // 创建目录
             utils.mkdir(componentPath);
             files.forEach(templateName => {
                 // 生成文件的名称
                 let newComponentName = templateName.replace(/componentName/g, ComponentName).replace(/.txt/g, '');
                 // 组件目标路径
-                const componentFileName = `${destinationPath}/${className}/${newComponentName}`;
-                const data = fs.readFileSync(`${templateFolderPath}/${templateName}`, 'utf8').replace(/\${ComponentName}/g, ComponentName).replace(/\${component-name}/g, className);
+                const componentFileName = `${destinationPath}/${kebabCase}/${newComponentName}`;
+                const data = fs.readFileSync(`${templateFolderPath}/${templateName}`, 'utf8').replace(/\${ComponentName}/g, ComponentName).replace(/\${component-name}/g, kebabCase);
                 fs.writeFileSync(componentFileName, data, 'utf8')
                 console.log(`${newComponentName}文件已生成`);
             })
             // 目录索引文件路径
             const indexPath = `${path.resolve(destinationPath)}/index.js`;
-            utils.appendIndexFile(indexPath, `export { default as ${ComponentName} } from './${className}';  // ${ComponentName}' \r\n`);
+            utils.appendIndexFile(indexPath, `export { default as ${ComponentName} } from './${kebabCase}';  // ${ComponentName}' \r\n`);
             resolve(files);
         });
 

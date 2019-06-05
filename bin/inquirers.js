@@ -24,7 +24,7 @@ module.exports = () => {
         // rootPath :: String
         // Root search directory
         message: '选择需要存放的位置:',
-        default: 'components/',
+        default: 'src/components/',
         suggestOnly: false,
         // suggestOnly :: Bool
         // Restrict prompt answer to available choices or use them as suggestions
