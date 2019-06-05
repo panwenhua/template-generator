@@ -1,7 +1,8 @@
 const inquirer = require('inquirer');
 inquirer.registerPrompt('fuzzypath', require('inquirer-fuzzy-path')) //注册一个遍历src下所有的目录与文件的propmpt
+const paths = require('./paths');
 
-
+const { rootPath } = paths.templateConfig;
 module.exports = () => {
     const componentName = {
         type: 'input',
@@ -20,7 +21,7 @@ module.exports = () => {
         // specify the type of nodes to display
         // default value: 'any'
         // example: itemType: 'file' - hides directories from the item list
-        rootPath: 'src',
+        rootPath: rootPath || 'src',
         // rootPath :: String
         // Root search directory
         message: '选择需要存放的位置:',
